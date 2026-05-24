@@ -138,7 +138,7 @@ class Sistema_Trafego_Pago(db.Model):
     satisfacao_cliente = db.Column(db.Text, nullable=False, default="none")
     tipo_trafego = db.Column(db.Text, nullable=False, default="none")
     data_registro_trafego = db.Column(db.DateTime, server_default=db.func.current_timestamp())
-    
+
 class Carteira_Digital_Depositar(db.Model):
     __tablename__ = "carteira_digital"
     id = db.Column(db.Integer, primary_key=True)
@@ -150,5 +150,7 @@ class Cliente_vendedor(db.Model):
     id = db.Column(db.Integer , primary_key = True)
     id_vendedor = db.Column(db.Text , nullable = False , default = "none")
     id_cliente = db.Column(db.Text , nullable = False , default = "none")
+    nome_cliente = db.Column(db.Text , nullable = False , default = "none")
+    nome_produto = db.Column(db.Text , nullable = False , default = "none")
     data_registro = db.Column(db.DateTime , server_default = db.func.current_timestamp())
     #esta tabela serve para registrar os clientes de cada vendedor com base nas compras realizadas
