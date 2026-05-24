@@ -105,15 +105,15 @@ class Pedidos_Produto(db.Model):
 class Tabel_Reacao_Produto(db.Model):
     __tablename__ = "reacao_produto"
     id = db.Column(db.Integer, primary_key=True)
+    
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), nullable=False)
+    id_produto = db.Column(db.Text, nullable=False)  
     
-    # 🔥 CORRIGIDO: Deve ser Integer, não Text
-    id_produto = db.Column(db.Text, nullable=False , default = "0")  
-    
-    estado_visualizacao = db.Column(db.Text, nullable=False, default="0")
-    estado_adoro = db.Column(db.Text, nullable=False, default="0")
+    estado_visualizacao = db.Column(db.String(10), nullable=False, default="0")
+    estado_adoro = db.Column(db.String(10), nullable=False, default="0")
 
     dados_usuario = db.relationship("Usuario", foreign_keys=[id_usuario])
+
 class Sistema_Trafego_Pago(db.Model):
     __tablename__ = "sistema_trafego_pago"
     id = db.Column(db.Integer, primary_key=True)
@@ -138,10 +138,17 @@ class Sistema_Trafego_Pago(db.Model):
     satisfacao_cliente = db.Column(db.Text, nullable=False, default="none")
     tipo_trafego = db.Column(db.Text, nullable=False, default="none")
     data_registro_trafego = db.Column(db.DateTime, server_default=db.func.current_timestamp())
-
+    
 class Carteira_Digital_Depositar(db.Model):
     __tablename__ = "carteira_digital"
     id = db.Column(db.Integer, primary_key=True)
     id_usuario = db.Column(db.Integer, db.ForeignKey("usuarios.id"), nullable=False)
     numero_conta = db.Column(db.Integer, nullable=False)
     valor_sacar_conta = db.Column(db.Integer, nullable=False)
+class Cliente_vendedor(db.Model):
+    __tablename__ = "Tabela_cliente_vendedor"
+    id = db.Column(db.Integer , primary_key = True)
+    id_vendedor = db.Column(db.Text , nullable = False , default = "none")
+    id_cliente = db.Column(db.Text , nullable = False , default = "none")
+    data_registro = db.Column(db.DateTime , server_default = db.func.current_timestamp())
+    #esta tabela serve para registrar os clientes de cada vendedor com base nas compras realizadas
