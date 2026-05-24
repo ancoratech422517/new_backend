@@ -1,5 +1,5 @@
 from flask import Blueprint , request , jsonify
-from models.database import db , Pedidos_Produto
+from models.database import db , Pedidos_Produto , Cliente_vendedor
 from datetime import datetime
 ComprarProduto = Blueprint("Comprar_produto" , __name__)
 
@@ -14,6 +14,7 @@ def Comprar_produto ():
         id_vendedor  = data.get("id_usuario_vendedor")
         telefone_conta_cliente = data.get("telefone_conta_cliente")
         urlImage = data.get("urlImage")
+
 
         dados_da_compra_do_produto_cliente = {
             "nome_cliente":nome_cliente,
@@ -38,18 +39,25 @@ def Comprar_produto ():
             "pedido":"cliente"
         }
 
+
+        #registra o usuario que comprou o produto na tabela do vendedor como um dos clientes do vendedor
+        dados_cliente = {
+            "id_vendedor":id_vendedor,
+            "id_cliente":id_cliente
+        }
+        #dos a serem registrado
         novo_pedido_cliente = Pedidos_Produto(**dados_da_compra_do_produto_cliente)
-        db.session.add(novo_pedido_cliente)
-        db.session.commit()
-
         novo_pedido_vendedor = Pedidos_Produto(**dados_da_compra_do_produto_vendedor)
+        novo_cliente = Cliente_vendedor(**dados_cliente)
+        
+        db.session.add(novo_pedido_cliente)
         db.session.add(novo_pedido_vendedor)
+        db.session.add(novo_cliente)
         db.session.commit()
-
+        #fim do registro dos dados no banco de dados
 
         return jsonify({"status":"Pagamento reealizado com sucesso!" , "dados":dados_da_compra_do_produto_vendedor})
 
-        print(f"este é os dados da compra do produto avelino:{dados_da_compra_do_produto}")
     except Exception as erro:
         print(f"erro ao fazer o pagamento , e este é o tipo do erro:{erro}")
         return jsonify({"status":"desulpe , parece que ouve um erro ao fazer o pagamento"})
