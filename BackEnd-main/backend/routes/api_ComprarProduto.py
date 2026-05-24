@@ -43,7 +43,9 @@ def Comprar_produto ():
         #registra o usuario que comprou o produto na tabela do vendedor como um dos clientes do vendedor
         dados_cliente = {
             "id_vendedor":id_vendedor,
-            "id_cliente":id_cliente
+            "id_cliente":id_cliente,
+            "nome_cliente":nome_cliente,
+            "nome_produto":nome_produto
         }
         #dos a serem registrado
         novo_pedido_cliente = Pedidos_Produto(**dados_da_compra_do_produto_cliente)
