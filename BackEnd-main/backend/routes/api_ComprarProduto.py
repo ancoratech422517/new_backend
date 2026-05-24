@@ -50,11 +50,11 @@ def Comprar_produto ():
         #dos a serem registrado
         novo_pedido_cliente = Pedidos_Produto(**dados_da_compra_do_produto_cliente)
         novo_pedido_vendedor = Pedidos_Produto(**dados_da_compra_do_produto_vendedor)
-        novo_cliente = Cliente_vendedor(**dados_cliente)
+        #novo_cliente = Cliente_vendedor(**dados_cliente)
         
         db.session.add(novo_pedido_cliente)
         db.session.add(novo_pedido_vendedor)
-        db.session.add(novo_cliente)
+        #db.session.add(novo_cliente)
         db.session.commit()
         #fim do registro dos dados no banco de dados
 
