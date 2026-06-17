@@ -17,8 +17,8 @@ def ConvidarUsuarioTurma():
 
 
         turma_convite_existente = Amizade.query.filter(
-            Amizade.id_turma_convite == id_turma,
-            Amizade.destinatario_id == id_convidado
+            Amizade.id_turma_convite == str(id_turma),
+            Amizade.destinatario_id == str(id_convidado)
         ).first()
 
         if turma_convite_existente:
@@ -26,7 +26,7 @@ def ConvidarUsuarioTurma():
             return jsonify({"resposta":"você já fez um convite para este usuario."})
         #verifica se o usuario já faz parte da turma
         ja_faz_parte = Turma_Aula.query.filter(
-            Turma_Aula.id_aluno_Turma == id_convidado,
+            Turma_Aula.id_aluno_Turma == str(id_convidado),
             Turma_Aula.nome_Turma == nome_Turma
         ).first()
         if ja_faz_parte:
