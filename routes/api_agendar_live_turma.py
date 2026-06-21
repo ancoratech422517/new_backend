@@ -22,7 +22,6 @@ def agendar_live_turma():
         nova_agenda = Agendar_Live_Turma(**dados_agenda)
         db.session.add(nova_agenda)
         db.session.commit()
-        print(f"estes são os dados do react avelino:{dados_agenda}")
         return jsonify({"resposta":"boas avelino"})
     except Exception as erro:
         print(f"erro ao fazer a agenda avelino:{erro}")
