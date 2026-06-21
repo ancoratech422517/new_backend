@@ -13,7 +13,7 @@ def buscar_quantidade_menssagem(dadosUsuario_id , amigo_nossa_sala):
 
         ).count()
 
-        print(f"este é a quantidade das menssagesn: {get_quantidade_menssagem}")
+ 
         return jsonify({"quantidade":get_quantidade_menssagem , "id_destinatario":dadosUsuario_id})
     except Exception as erro:
         print(f"erro ao buscar a quantidade de menssagem no banco de dados:{erro}")
