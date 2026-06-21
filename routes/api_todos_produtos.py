@@ -50,9 +50,7 @@ def buscar_todos_produtos(id_usuario):
                 "estado_adoro": ja_adorou
             }
             lista_produto.append(item)
-            print(f"este é o valor do estado_adoro:{ja_adorou}")
-            print(f"este é o valor o estado adoro:{estado_adoro}")
-            print(type(estado_adoro))
+            
 
         return jsonify(lista_produto), 200
 
