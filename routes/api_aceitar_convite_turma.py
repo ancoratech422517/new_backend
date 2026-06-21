@@ -33,7 +33,7 @@ def aceitar_convite_turma():
             novo_aluno = Turma_Aula(**dados)
             db.session.add(novo_aluno)
             db.session.commit()
-            print(f"usuario adicionado a turma {novo_nome}")
+            
         print(f"testando os dados:{dados}")
         return jsonify({"resposta":"sucesso"})
     
