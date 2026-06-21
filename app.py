@@ -110,6 +110,7 @@ import routes.websocket_notificar_compra_usuario
 #--------------------------------------------------
 import routes.websocket_convidar_usuario_turma
 import routes.websocket_buscar_nova_aula
+import routes.websocket_buscar_agenda_turma
 app = Flask(__name__)
 
 # ===================== CORS =====================
