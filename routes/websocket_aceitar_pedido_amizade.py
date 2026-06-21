@@ -11,8 +11,6 @@ def Aceitar_pedido_amizade(data):
     foto_remitente = data.get("foto_remitente")
     foto_destinatario = data.get("foto_destinatario")
 
-    print(f"avelino wy , esta é a foto do destinatario: {foto_destinatario}")
-
 
     if not id_amigo or not id_usuario:
         print("Erro: IDs inválidos recebidos")
@@ -21,8 +19,6 @@ def Aceitar_pedido_amizade(data):
     # Ordenar para criar sala única
     ordernar_sala = sorted([int(id_usuario), int(id_amigo)])
     nossa_sala = f"sala_{ordernar_sala[0]}_{ordernar_sala[1]}"
-
-    print(f"Processando aceitação de amizade - Sala: {nossa_sala}")
     
 
     # ====================== NOVA LÓGICA: VERIFICAR SE JÁ SÃO AMIGOS ======================
